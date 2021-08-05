@@ -37,10 +37,10 @@ const PORT=process.env.PORT||5000
 
 
 const connection=mysql.createConnection({
-    host:"localhost",
-    database:"logindata",
-    user:"root",
-    password:""
+    host:"b7xxx0u0g3ypuv8h1vgu-mysql.services.clever-cloud.com",
+    database:"b7xxx0u0g3ypuv8h1vgu",
+    user:"ulxy37pbb2b7njcu",
+    password:"D5tE747q9zjYHPEfKvH5"
 })
 
 

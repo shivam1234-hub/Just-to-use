@@ -5,10 +5,10 @@ const nodemailer = require('nodemailer');
 
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    database: "logindata",
-    user: "root",
-    password: ""
+    host: "b7xxx0u0g3ypuv8h1vgu-mysql.services.clever-cloud.com",
+    database: "b7xxx0u0g3ypuv8h1vgu",
+    user: "ulxy37pbb2b7njcu",
+    password: "D5tE747q9zjYHPEfKvH5"
 })
 var transport = nodemailer.createTransport({
     service: "gmail",
@@ -154,8 +154,8 @@ router.post('/login', (req, res) => {
             message = {
                 from: 'shivamvijay543@gmail.com', // Sender address
                 to: `${req.body.email}`, // List of recipients
-                subject: 'Testing Nodejs mailer', // Subject line
-                text: 'Hey!This is Shivam Vijay ,Welcome to nodejs mailer' // Plain text body
+                subject: 'First FullStact  App', // Subject line
+                text: 'Hey!This is Shivam Vijay ,Associate member at E-cell,IIT Kharagpur' // Plain text body
             };
             transport.sendMail(message, function(err, info) {
                 if (err) {

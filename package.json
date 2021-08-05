@@ -18,7 +18,8 @@
   "description": "LoginRegisterForm",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node app.js",
+    "devStart":"nodemon app.js"
   },
   "author": "Shivam Vijay",
   "license": "ISC"
