@@ -3,7 +3,6 @@ const router = express.Router();
 const mysql = require("mysql");
 const nodemailer = require('nodemailer');
 
-
 require('dotenv').config()
 const connection = mysql.createConnection({
     host:process.env.DB_HOST,
@@ -11,8 +10,6 @@ const connection = mysql.createConnection({
     user:process.env.DB_USER,
     password:process.env.DB_PASS
 })
-
-
 var transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -153,12 +150,15 @@ router.post('/login', (req, res) => {
                 password
             });
         } else {
+            connection.query('SELECT name FROM registerdata WHERE email=? AND password=?', [email, password], (err, res) => {
+               console.log(res[0].name);
+            
 
             message = {
                 from: 'shivamvijay543@gmail.com', // Sender address
                 to: `${req.body.email}`, // List of recipients
                 subject: 'First FullStact  App', // Subject line
-                text: 'Hey!This is Shivam Vijay ,Associate member at E-cell,IIT Kharagpur' // Plain text body
+                text: `Hey ${ res[0].name}!This is Shivam Vijay ,Associate member at E-cell,IIT Kharagpur` // Plain text body
             };
             transport.sendMail(message, function(err, info) {
                 if (err) {
@@ -167,6 +167,7 @@ router.post('/login', (req, res) => {
                     console.log(info);
                 }
             });
+        });
             res.render('dashboard', {
 
                 name: req.body.email
