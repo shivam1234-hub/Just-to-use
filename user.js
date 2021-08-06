@@ -150,8 +150,10 @@ router.post('/login', (req, res) => {
                 password
             });
         } else {
+            var user_name;
             connection.query('SELECT name FROM registerdata WHERE email=? AND password=?', [email, password], (err, res) => {
                console.log(res[0].name);
+               user_name = res[0].name;
             
 
             message = {
@@ -168,10 +170,12 @@ router.post('/login', (req, res) => {
                 }
             });
         });
+        setTimeout(() => { console.log(user_name);
             res.render('dashboard', {
 
-                name: req.body.email
-            })
+                name: user_name
+            })},1000)
+       
 
         }
     }, 1000)
