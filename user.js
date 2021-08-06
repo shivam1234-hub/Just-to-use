@@ -4,12 +4,15 @@ const mysql = require("mysql");
 const nodemailer = require('nodemailer');
 
 
+require('dotenv').config()
 const connection = mysql.createConnection({
-    host: "b7xxx0u0g3ypuv8h1vgu-mysql.services.clever-cloud.com",
-    database: "b7xxx0u0g3ypuv8h1vgu",
-    user: "ulxy37pbb2b7njcu",
-    password: "t8JlGQZ3l6CCuUsu8Kam"
+    host:process.env.DB_HOST,
+    database:process.env.DATABASE,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASS
 })
+
+
 var transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
