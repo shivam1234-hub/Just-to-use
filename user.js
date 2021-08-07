@@ -170,20 +170,15 @@ router.post('/login', (req, res) => {
                 }
             });
         });
-        setTimeout(() => { 
-            console.log(user_name);
-            req.flash('name',`${user_name}`);
-           res.redirect('/users/dashboard');
-        },1000)
+        setTimeout(() => { console.log(user_name);
+            res.render('dashboard', {
+
+                name: user_name
+            })},1000)
        
 
         }
     }, 1000)
-})
-
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard');
-
 })
 
 module.exports = router;
