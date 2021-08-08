@@ -76,6 +76,21 @@ router.post('/register', (req, res) => {
             });
 
         }
+        else{
+            connection.query('SELECT * FROM registerdata WHERE password=?', [password], (err, res) => {
+                if (err) {
+                    console.log(err);
+                }
+                if (res.length > 0) {
+                    errors.push({
+                        msg: "This password is already in use"
+                    });
+        
+                }
+            })
+        }
+
+
     })
     setTimeout(() => {
         if (errors.length > 0) {
