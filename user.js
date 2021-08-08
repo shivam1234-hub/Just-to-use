@@ -145,7 +145,7 @@ router.post('/login', (req, res) => {
             msg: 'Please fill in all field'
         });
     } else {
-        connection.query('SELECT * FROM registerdata WHERE email=? ', [email], (err, res) => {
+        connection.query('SELECT * FROM registerdata WHERE email=? AND password=?', [email, password], (err, res) => {
             if (err) {
                 console.log(err);
             }
@@ -154,20 +154,6 @@ router.post('/login', (req, res) => {
                     msg: "This email id is not registered"
                 });
 
-            }
-            else
-            {
-                connection.query('SELECT * FROM registerdata WHERE password=? ',[password], (err, res) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                    if (res.length === 0) {
-                        errors.push({
-                            msg: "This password is wrong"
-                        });
-        
-                    }
-                })
             }
         })
     }
