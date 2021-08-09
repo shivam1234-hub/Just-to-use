@@ -197,13 +197,13 @@ router.post('/login', (req, res) => {
                 subject: 'First FullStact  App', // Subject line
                 text: `Hey ${ res[0].name}!This is Shivam Vijay ,Associate member at E-cell,IIT Kharagpur` // Plain text body
             };
-            transport.sendMail(message, function(err, info) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log(info);
-                }
-            });
+            // transport.sendMail(message, function(err, info) {
+            //     if (err) {
+            //         console.log(err)
+            //     } else {
+            //         console.log(info);
+            //     }
+            // });
         });
         setTimeout(() => { 
             console.log(user_name);
@@ -217,5 +217,9 @@ router.get('/dashboard', (req, res) => {
     res.render('dashboard');
 
 })
+router.get('/logout', (req, res) => {
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/users/login');
+  });
 
 module.exports = router;
