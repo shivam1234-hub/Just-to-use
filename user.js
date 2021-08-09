@@ -35,6 +35,10 @@ router.get('/CreatePassword', (req, res) => {
     res.render('CreatePassword');
 
 })
+router.get('/create', (req, res) => {
+    res.render('create');
+
+})
 var userName;
 router.post('/register', (req, res) => {
 
@@ -201,13 +205,13 @@ router.post('/login', (req, res) => {
                 subject: 'First FullStact  App', // Subject line
                 text: `Hey ${ res[0].name}!This is Shivam Vijay ,Associate member at E-cell,IIT Kharagpur` // Plain text body
             };
-            transport.sendMail(message, function(err, info) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log(info);
-                }
-            });
+            // transport.sendMail(message, function(err, info) {
+            //     if (err) {
+            //         console.log(err)
+            //     } else {
+            //         console.log(info);
+            //     }
+            // });
         });
         setTimeout(() => { 
             console.log(user_name);
@@ -263,7 +267,7 @@ router.post('/CreatePassword', (req, res) => {
             from: 'shivamvijay543@gmail.com', // Sender address
             to: `${req.body.email}`, // List of recipients
             subject: 'Reset your password',// Subject line
-            text: `Hey!Follow this link to reset your password` // Plain text body
+            text: `Hey!Follow this link to reset your password \n\n http://mysql-loginform-nodejs.herokuapp.com/users/create ` // Plain text body
         };
         transport.sendMail(message, function(err, info) {
                     if (err) {
