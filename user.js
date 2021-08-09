@@ -39,6 +39,10 @@ router.get('/create', (req, res) => {
     res.render('create');
 
 })
+router.get('/emailsent', (req, res) => {
+    res.render('emailsent');
+
+})
 var userName;
 router.post('/register', (req, res) => {
 
@@ -279,9 +283,9 @@ router.post('/CreatePassword', (req, res) => {
                         console.log(info);
                     }
                 });
-        req.flash('success_msg', 'Email sent!Check your email for further instructions');
+          req.flash('success_msg', 'Email sent!Check your email for further instructions');
       
-        res.redirect('/users/CreatePassword');
+          res.redirect('/users/emailsent');
     }
 
     
