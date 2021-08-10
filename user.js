@@ -39,10 +39,6 @@ router.get('/create', (req, res) => {
     res.render('create');
 
 })
-router.get('/emailsent', (req, res) => {
-    res.render('emailsent');
-
-})
 router.get('/error', (req, res) => {
     res.render('error');
 
@@ -386,6 +382,16 @@ router.post('/create', (req, res) => {
         }
     }, 1000)
 
+    }
+
+})
+
+router.get('/emailsent', (req, res) => {
+    if(email==undefined)
+    res.redirect('/users/error')
+    else
+    {
+        res.render('emailsent')
     }
 
 })
